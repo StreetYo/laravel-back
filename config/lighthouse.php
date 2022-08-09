@@ -28,7 +28,16 @@ return [
          * make sure to return spec-compliant responses in case an error is thrown.
          */
         'middleware' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+
             \Nuwave\Lighthouse\Support\Http\Middleware\AcceptJson::class,
+
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
             // Logs in a user if they are authenticated. In contrast to Laravel's 'auth'
             // middleware, this delegates auth and permission checks to the field level.
@@ -56,7 +65,7 @@ return [
     |
     */
 
-    'guard' => 'api',
+    'guard' => 'sanctum',
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +180,7 @@ return [
     'namespaces' => [
         'models' => ['App', 'App\\Models'],
         'queries' => 'App\\GraphQL\\Queries',
-        'mutations' => 'App\\GraphQL\\Mutations',
+        'mutations' => ['App\\GraphQL\\Mutations', 'App\\GraphQL\\Mutations\\Authentication'],
         'subscriptions' => 'App\\GraphQL\\Subscriptions',
         'interfaces' => 'App\\GraphQL\\Interfaces',
         'unions' => 'App\\GraphQL\\Unions',
