@@ -10,8 +10,10 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "mll-lab/graphql-php-scalars": "^5.4",
         "mll-lab/laravel-graphql-playground": "^2.6",
-        "nuwave/lighthouse": "^5.57"
+        "nuwave/lighthouse": "^5.57",
+        "stagem/php-graphql-scalars": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
