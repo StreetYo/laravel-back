@@ -2,7 +2,6 @@
 
 namespace App\GraphQL\Mutations\UserPage;
 
-use App\Models\UserPage\Page;
 use Illuminate\Support\Facades\Auth;
 
 final class UpdatePage

@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->string('type');
             $table->boolean('enabled');
-            $table->unsignedInteger('order');
+            $table->unsignedInteger('order')->nullable();
             $table->json('meta');
 
             $table->foreignIdFor(\App\Models\UserPage\Page::class);

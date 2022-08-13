@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\UserPage\Field;
 use App\Models\UserPage\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public function pages() {
         return $this->hasMany(Page::class);
+    }
+
+    public function fields() {
+        return $this->hasManyThrough(Field::class, Page::class);
     }
 }

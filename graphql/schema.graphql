@@ -63,6 +63,13 @@ type Mutation {
     createPage(input: CreatePageInput! @spread): Page @guard
 
     updatePage(input: UpdatePageInput! @spread): Page @guard
+
+
+    createField(input: CreateFieldInput! @spread): Field @guard
+
+    updateField(input: UpdateFieldInput! @spread): Field @guard
+
+    dropField(input: DropFieldInput! @spread): Field @guard
 }
 
 type Page {
@@ -91,6 +98,32 @@ input CreatePageInput {
 input UpdatePageInput {
     id: ID! @eq
     meta: JSON!
+}
+
+input CreateFieldInput @validator {
+    pageId: ID!
+
+    type: String!
+
+    order: Int
+
+    enabled: Boolean!
+
+    meta: JSON!
+}
+
+input UpdateFieldInput @validator {
+    id: ID! @eq
+
+    order: Int
+
+    enabled: Boolean
+
+    meta: JSON
+}
+
+input DropFieldInput @validator {
+    id: ID! @eq
 }
 
 type Field {
