@@ -26,8 +26,8 @@ class UserRegistration extends TestCase
      */
     public function test_registration()
     {
-        $this->graphQL(/** @lang GraphQL */
-    'mutation {
+        $this->graphQL(/** @lang GraphQL */'
+            mutation {
               register(
                   username: "stretstreet",
                   name: "Nariman",
@@ -38,7 +38,8 @@ class UserRegistration extends TestCase
                 name
                 email
               }
-        }')
+            }
+        ')
         ->assertJson([
             'data' => [
                 'register' => [
