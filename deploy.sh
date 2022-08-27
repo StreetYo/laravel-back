@@ -50,6 +50,5 @@ composer dump-autoload -o
 php artisan migrate
 #php artisan octane:reload
 php artisan queue:restart
-#php artisan scribe:generate
 
 npm run build
