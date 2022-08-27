@@ -35,7 +35,7 @@ if [[ ! ($GIT_PULL_TRY_2 =~ $already_up_to_date) ]]; then
     exit
 fi
 
-changed_files="$(cd .. && git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
 check_run() {
 	echo "$changed_files" | grep --quiet "$1" && eval "$2"
