@@ -3,7 +3,7 @@ name: Lavka workflow
 on: [push, pull_request]
 jobs:
   tests:
-    name: Laravel (PHP ${{ matrix.php-versions }})
+    name: Testing
     runs-on: ubuntu-latest
     env:
       BROADCAST_DRIVER: log
@@ -90,6 +90,7 @@ jobs:
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
   deploy:
+    name: Deploy
     needs: tests
     runs-on: ubuntu-latest
     steps:
