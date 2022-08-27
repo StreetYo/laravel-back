@@ -104,4 +104,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            touch /root/qwe.txt
+            cd /var/www/fastuser/data/www/linker.hydradx-stats.com/
+            su fastuser -c "bash deploy.sh"
