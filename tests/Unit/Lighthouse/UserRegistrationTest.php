@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Lighthouse;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase;
 use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Nuwave\Lighthouse\Testing\RefreshesSchemaCache;
@@ -12,6 +13,7 @@ class UserRegistrationTest extends TestCase
     use CreatesApplication;
     use MakesGraphQLRequests;
     use RefreshesSchemaCache;
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
@@ -43,11 +45,9 @@ class UserRegistrationTest extends TestCase
         ->assertJson([
             'data' => [
                 'register' => [
-                    [
-                        'id' => '1',
-                        'name' => 'Nariman',
-                        'email' => 'stretstreet@yandex.ru',
-                    ],
+                    'id' => '1',
+                    'name' => 'Nariman',
+                    'email' => 'stretstreet@yandex.ru',
                 ],
             ],
         ]);
