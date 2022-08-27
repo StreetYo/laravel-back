@@ -7,7 +7,7 @@ use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Nuwave\Lighthouse\Testing\RefreshesSchemaCache;
 use Tests\CreatesApplication;
 
-class UserRegistration extends TestCase
+class UserRegistrationTest extends TestCase
 {
     use CreatesApplication;
     use MakesGraphQLRequests;
