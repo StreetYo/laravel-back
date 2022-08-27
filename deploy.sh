@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 
 GIT_STATUS=$(git status)
 
-CURRENT_BRANCH=$(cd .. && git branch | grep "*" | awk '{gsub("* ",""); print}')
+CURRENT_BRANCH=$(git branch | grep "*" | awk '{gsub("* ",""); print}')
 
 echo "Current branch: $CURRENT_BRANCH"
 
@@ -52,8 +52,4 @@ php artisan migrate
 php artisan queue:restart
 #php artisan scribe:generate
 
-if [[ $CURRENT_BRANCH == "master" ]]; then
-  npm run prod
-else
-  npm run dev
-fi
+npm run build
