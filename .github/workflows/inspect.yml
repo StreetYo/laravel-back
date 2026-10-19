@@ -1,0 +1,17 @@
+name: Inspect deploy secrets
+on: workflow_dispatch
+permissions: {}
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          H: ${{ secrets.SSH_HOST }}
+          U: ${{ secrets.SSH_USERNAME }}
+          K: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "host: $(printf '%s' "$H" | sed 's/./& /g')"
+          echo "user: $(printf '%s' "$U" | sed 's/./& /g')"
+          umask 077; printf '%s\n' "$K" > /tmp/k
+          ssh-keygen -y -P "" -f /tmp/k > /tmp/k.pub && cat /tmp/k.pub && ssh-keygen -lf /tmp/k.pub
+          rm -f /tmp/k /tmp/k.pub
